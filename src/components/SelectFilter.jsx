@@ -1,23 +1,23 @@
-// import { useState } from 'react';
-import { Container} from './SelectFilter.styled';
+import { useState } from 'react';
+import { Container, StyledSelect } from './SelectFilter.styled';
 
-// const options = [
-//   { value: 'show all', label: 'Show all' },
-//   { value: 'follow', label: 'Follow' },
-//   { value: 'followings', label: 'Followings' },
-// ];
+const options = [
+  { value: 'show all', label: 'Show all' },
+  { value: 'follow', label: 'Follow' },
+  { value: 'followings', label: 'Followings' },
+];
 
 export const SelectFilter = () => {
-  // const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   return (
     <Container>
-      {/* <StyledSelect
+      <StyledSelect
         placeholder="Сhoose tweets by filter..."
         value={selectedOption}
         onChange={setSelectedOption}
         options={options}
-      /> */}
+      />
     </Container>
   );
 };
