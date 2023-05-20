@@ -22,8 +22,14 @@ export const PagButtonNumber = styled(NavLink)`
   text-decoration: none;
   transition: background-color 0.3s;
   border-color: #471ca9;
+  background-color: ${props => (props.active ? '#471ca9' : 'transparent')};
+  color: ${props => (props.active ? '#ffffff' : 'black')};
 
-  :active,
+  /* &.active {
+    background-color: #471ca9;
+    color: #ffffff;
+  } */
+
   :focus {
     background-color: #471ca9;
     color: #ffffff;
@@ -34,7 +40,7 @@ export const PagButtonNumber = styled(NavLink)`
   }
 `;
 
-export const BagButtonArrow = styled.button`
+export const PagButtonArrow = styled.button`
   color: black;
   padding: 8px 16px;
   border-color: #471ca9;

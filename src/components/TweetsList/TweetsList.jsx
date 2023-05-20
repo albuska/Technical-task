@@ -21,7 +21,6 @@ export const TweetsList = () => {
     const controller = new AbortController();
     fetchAllTweets(controller)
       .then(users => {
-        console.log(users.length);
         if (users.length === 0) {
           Notiflix.Notify.failure('Oops..There are no tweets =(');
         }

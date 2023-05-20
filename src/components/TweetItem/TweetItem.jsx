@@ -45,7 +45,9 @@ export const TweetItem = ({ tweet }) => {
       />
       <BoxText>
         <p>{tweet.tweets} TWEETS</p>
-        <p>{followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} FOLLOWERS</p>
+        <p>
+          {followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} FOLLOWERS
+        </p>
 
         <Button
           style={
@@ -68,5 +70,6 @@ TweetItem.propTypes = {
     tweets: PropTypes.number.isRequired,
     followers: PropTypes.number.isRequired,
     isFollowing: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
 };

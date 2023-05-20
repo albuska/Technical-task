@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Container, StyledSelect } from './SelectFilter.styled';
+// import { statusFilters } from '../constants';
 
 const options = [
   { value: 'show all', label: 'Show all' },
@@ -9,6 +10,8 @@ const options = [
 
 export const SelectFilter = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+
+// if(tweet.isFollowing === statusFilters.)
 
   return (
     <Container>

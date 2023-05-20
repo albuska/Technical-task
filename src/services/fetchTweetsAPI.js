@@ -6,6 +6,13 @@ export const fetchAllTweets = async controller => {
   const response = await axios.get(`/users`, {
     signal: controller.signal,
   });
-  console.log(response.data);
   return response.data;
 };
+
+// export const fetchChangeTweet = async (id, followers, isFollowing) => {
+//   const response = await axios.put(`/users${id}`, {
+//     followers,
+//     isFollowing,
+//   });
+//   return response.data;
+// };

@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
 import { BsFillCaretRightFill } from 'react-icons/bs';
 import { BsFillCaretLeftFill } from 'react-icons/bs';
-import { Container, Item, List, PagButtonNumber } from './Pagination.styled';
+import {
+  Container,
+  Item,
+  List,
+  PagButtonNumber,
+  PagButtonArrow,
+} from './Pagination.styled';
 
 export const Pagination = ({
   perPage,
@@ -16,21 +22,23 @@ export const Pagination = ({
   }
   return (
     <Container>
-      <PagButtonNumber onClick={handlePrevPage}>
+      <PagButtonArrow onClick={handlePrevPage}>
         <BsFillCaretLeftFill />
-      </PagButtonNumber>
+      </PagButtonArrow>
       <List>
-        {pageNumbers.map(number => (
-          <Item key={number}>
-            <PagButtonNumber onClick={() => paginate(number)}>
-              {number}
-            </PagButtonNumber>
-          </Item>
-        ))}
+        {pageNumbers.map(number => {
+          return (
+            <Item key={number}>
+              <PagButtonNumber onClick={() => paginate(number)}>
+                {number}
+              </PagButtonNumber>
+            </Item>
+          );
+        })}
       </List>
-      <PagButtonNumber onClick={handleNextPage}>
+      <PagButtonArrow onClick={handleNextPage}>
         <BsFillCaretRightFill />
-      </PagButtonNumber>
+      </PagButtonArrow>
     </Container>
   );
 };
