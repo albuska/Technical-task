@@ -2,11 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchAllTweets } from '../../services/fetchTweetsAPI';
 import { List, Item } from '../TweetItem/TweetItem.styled';
 import { TweetItem } from '../TweetItem/TweetItem';
-import {
-  ButtonGoBack,
-  Container,
-  ButtonLoadMore,
-} from './TweetsList.styled';
+import { ButtonGoBack, Container, ButtonLoadMore } from './TweetsList.styled';
 import { BsArrowLeft } from 'react-icons/bs';
 import { SelectFilter } from '../SelectFilter';
 import Notiflix from 'notiflix';
@@ -18,7 +14,7 @@ export const TweetsList = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     setLoading(true);
     const controller = new AbortController();
@@ -32,13 +28,12 @@ export const TweetsList = () => {
         setLoading(true);
 
         console.log(pages);
-        // setTweets(prevState => [...prevState, ...users]);
-        setTweets(users); 
+        setTweets(users);
         setTotalPages(pages);
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false));
-    
+
     return () => {
       controller.abort();
     };
@@ -48,7 +43,7 @@ export const TweetsList = () => {
     setPage(prevState => prevState + 1);
   };
 
-      const showButton = tweets.length >= 12;
+  const showButton = tweets.length >= 12;
 
   return (
     <Container>
@@ -58,7 +53,6 @@ export const TweetsList = () => {
       <SelectFilter />
       {error && <h1>{error.message}</h1>}
       <List>
-
         {tweets &&
           tweets.map(tweet => (
             <Item key={tweet.id}>

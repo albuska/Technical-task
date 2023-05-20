@@ -11,7 +11,7 @@ import {
   BoxText,
 } from './TweetItem.styled';
 import { useState } from 'react';
-import DefaultImage from '../assets/gefaultImage.jpg';
+import DefaultImage from '../assets/defaultImage.jpg';
 import Logo from '../assets/logo.png';
 import BgImage from '../assets/mainBgImage.png';
 import Rectangle from '../assets/rectangle.png';
@@ -20,9 +20,6 @@ import Ellipse from '../assets/ellipse.png';
 export const TweetItem = ({ tweet }) => {
   const [isFollowing, setIsFollowing] = useState(tweet.isFollowing);
   const [followers, setFollowers] = useState(tweet.followers);
-
-  console.log(followers);
-  console.log(isFollowing);
 
   const handleClickChangeFollow = () => {
     if (!isFollowing) {
@@ -47,7 +44,6 @@ export const TweetItem = ({ tweet }) => {
         alt={tweet.user}
       />
       <BoxText>
-        {/* <p>{tweet.user}</p> */}
         <p>{tweet.tweets} TWEETS</p>
         <p>{followers} FOLLOWERS</p>
 
