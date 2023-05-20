@@ -7,11 +7,11 @@ import { BsArrowLeft } from 'react-icons/bs';
 import { SelectFilter } from '../SelectFilter';
 import Notiflix from 'notiflix';
 import { Loader } from '../Loader/Loader';
+import { Pagination } from '../Pagination/Pagination';
 
 export const TweetsList = () => {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error] = useState(null);
   const [perPage] = useState(6);
@@ -25,13 +25,9 @@ export const TweetsList = () => {
         if (users.length === 0) {
           Notiflix.Notify.failure('Oops..There are no tweets =(');
         }
-        const pages = Math.ceil(users.length / perPage);
-        console.log(pages)
-        setLoading(true);
 
-        console.log(pages);
+        setLoading(true);
         setTweets(users);
-        setTotalPages(pages);
       })
       .catch(error => console.log(error))
       .finally(() => setLoading(false));
@@ -41,11 +37,23 @@ export const TweetsList = () => {
     };
   }, [perPage]);
 
-  const handleClickLoadMore = () => {
+  const lastTweetIndex = page * perPage;
+  const firstTweetIndex = lastTweetIndex - perPage;
+  const currentTweet = tweets.slice(firstTweetIndex, lastTweetIndex);
+
+  const paginate = pageNumber => setPage(pageNumber);
+
+  const handleNextPage = () => {
     setPage(prevState => prevState + 1);
   };
 
-  const showButton = tweets.length >= 12;
+  const handlePrevPage = () => {
+    setPage(prevState => prevState - 1);
+  };
+
+  const handleClickLoadMore = () => {
+    setPage(prevState => prevState + 1);
+  };
 
   return (
     <Container>
@@ -56,18 +64,25 @@ export const TweetsList = () => {
       {error && <h1>{error.message}</h1>}
       <List>
         {tweets &&
-          tweets.map(tweet => (
+          currentTweet.map(tweet => (
             <Item key={tweet.id}>
               <TweetItem tweet={tweet} />
             </Item>
           ))}
       </List>
       {loading && <Loader />}
-      {showButton && !loading && page < totalPages && (
+      {tweets && (
         <ButtonLoadMore type="button" onClick={handleClickLoadMore}>
           Load more
         </ButtonLoadMore>
       )}
+      <Pagination
+        perPage={perPage}
+        totalTweets={tweets.length}
+        paginate={paginate}
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+      />
     </Container>
   );
 };

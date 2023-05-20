@@ -45,7 +45,7 @@ export const TweetItem = ({ tweet }) => {
       />
       <BoxText>
         <p>{tweet.tweets} TWEETS</p>
-        <p>{followers} FOLLOWERS</p>
+        <p>{followers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} FOLLOWERS</p>
 
         <Button
           style={
