@@ -1,0 +1,1 @@
+import{j as t}from"./index-0e5db9b4.js";const s="/technical-task/assets/photo-96d2afc5.jpg",e=()=>t.jsxs("div",{style:{textAlign:"center"},children:[t.jsx("img",{src:s,alt:"Photo",width:"350",style:{paddingTop:20}}),t.jsx("h1",{})]});export{e as default};
