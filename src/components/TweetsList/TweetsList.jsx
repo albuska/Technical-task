@@ -13,7 +13,8 @@ export const TweetsList = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
+  const [perPage] = useState(6);
 
   useEffect(() => {
     setLoading(true);
@@ -24,20 +25,21 @@ export const TweetsList = () => {
         if (users.length === 0) {
           Notiflix.Notify.failure('Oops..There are no tweets =(');
         }
-        const pages = Math.ceil(users.length / 12);
+        const pages = Math.ceil(users.length / perPage);
+        console.log(pages)
         setLoading(true);
 
         console.log(pages);
         setTweets(users);
         setTotalPages(pages);
       })
-      .catch(error => setError(error))
+      .catch(error => console.log(error))
       .finally(() => setLoading(false));
 
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [perPage]);
 
   const handleClickLoadMore = () => {
     setPage(prevState => prevState + 1);
