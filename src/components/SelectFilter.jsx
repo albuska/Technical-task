@@ -14,7 +14,6 @@ export const SelectFilter = ({ tweets }) => {
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   const handleFilterChange = e => {
-    console.log(e.value);
     setSelectedFilter(e.value);
   };
 
