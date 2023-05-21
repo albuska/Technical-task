@@ -16,6 +16,7 @@ import Logo from '../assets/logo.png';
 import BgImage from '../assets/mainBgImage.png';
 import Rectangle from '../assets/rectangle.png';
 import Ellipse from '../assets/ellipse.png';
+import { updateTweet } from '../../services/fetchTweetsAPI';
 
 export const TweetItem = ({ tweet }) => {
   const [isFollowing, setIsFollowing] = useState(tweet.isFollowing);
@@ -23,9 +24,17 @@ export const TweetItem = ({ tweet }) => {
 
   const handleClickChangeFollow = () => {
     if (!isFollowing) {
+      updateTweet(tweet.id, {
+        isFollowing: !isFollowing,
+        followers: followers + 1,
+      });
       setIsFollowing(true);
       setFollowers(followers + 1);
     } else {
+      updateTweet(tweet.id, {
+        isFollowing: !isFollowing,
+        followers: followers + 1,
+      });
       setIsFollowing(false);
       setFollowers(followers - 1);
     }

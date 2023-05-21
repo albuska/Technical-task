@@ -11,10 +11,10 @@ import { Pagination } from '../Pagination/Pagination';
 
 export const TweetsList = () => {
   const [tweets, setTweets] = useState([]);
-  const [page, setPage] = useState(1);
+  const [setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error] = useState(null);
-  const [perPage] = useState(6);
+  const [perPage, setPerPage] = useState(6);
 
   useEffect(() => {
     setLoading(true);
@@ -24,7 +24,6 @@ export const TweetsList = () => {
         if (users.length === 0) {
           Notiflix.Notify.failure('Oops..There are no tweets =(');
         }
-
         setLoading(true);
         setTweets(users);
       })
@@ -34,25 +33,20 @@ export const TweetsList = () => {
     return () => {
       controller.abort();
     };
-  }, [perPage]);
+  }, []);
 
-  const lastTweetIndex = page * perPage;
-  const firstTweetIndex = lastTweetIndex - perPage;
-  const currentTweet = tweets.slice(firstTweetIndex, lastTweetIndex);
+  const sliceListOfTweets = tweets.slice(0, perPage);
 
   const paginate = pageNumber => setPage(pageNumber);
 
-  const handleNextPage = () => {
-    setPage(prevState => prevState + 1);
-  };
-
-  const handlePrevPage = () => {
-    setPage(prevState => prevState - 1);
-  };
-
   const handleClickLoadMore = () => {
-    setPage(prevState => prevState + 1);
+    setPerPage(perPage + perPage);
   };
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(tweets.length / perPage); i += 1) {
+    pageNumbers.push(i);
+  }
 
   return (
     <Container>
@@ -63,7 +57,7 @@ export const TweetsList = () => {
       {error && <h1>{error.message}</h1>}
       <List>
         {tweets &&
-          currentTweet.map(tweet => (
+          sliceListOfTweets.map(tweet => (
             <Item key={tweet.id}>
               <TweetItem tweet={tweet} />
             </Item>
@@ -71,17 +65,15 @@ export const TweetsList = () => {
       </List>
       {loading && <Loader />}
       {tweets && (
-        <ButtonLoadMore type="button" onClick={handleClickLoadMore}>
+        <ButtonLoadMore
+          type="button"
+          onClick={() => handleClickLoadMore()}
+          hidden={pageNumbers.length === 1}
+        >
           Load more
         </ButtonLoadMore>
       )}
-      <Pagination
-        perPage={perPage}
-        totalTweets={tweets.length}
-        paginate={paginate}
-        handleNextPage={handleNextPage}
-        handlePrevPage={handlePrevPage}
-      />
+      <Pagination pageNumbers={pageNumbers} paginate={paginate} />
     </Container>
   );
 };

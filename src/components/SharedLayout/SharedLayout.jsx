@@ -32,7 +32,7 @@ export const SharedLayout = () => {
         </Suspense>
       </main>
       <Footer>
-        <hr/>
+        <hr />
         <Paragraph>
           Created by <b>Albina Anistratenko</b>
         </Paragraph>
