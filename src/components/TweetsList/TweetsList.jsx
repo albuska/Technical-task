@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { fetchAllTweets } from '../../services/fetchTweetsAPI';
-import { List, Item } from '../TweetItem/TweetItem.styled';
-import { TweetItem } from '../TweetItem/TweetItem';
 import { ButtonGoBack, Container, ButtonLoadMore } from './TweetsList.styled';
 import { BsArrowLeft } from 'react-icons/bs';
 import { SelectFilter } from '../SelectFilter';
@@ -53,16 +51,16 @@ export const TweetsList = () => {
       <ButtonGoBack to="/">
         <BsArrowLeft /> Go back
       </ButtonGoBack>
-      <SelectFilter />
+      <SelectFilter tweets={sliceListOfTweets} />
       {error && <h1>{error.message}</h1>}
-      <List>
+      {/* <List>
         {tweets &&
           sliceListOfTweets.map(tweet => (
             <Item key={tweet.id}>
-              <TweetItem tweet={tweet} />
+      
             </Item>
           ))}
-      </List>
+      </List> */}
       {loading && <Loader />}
       {tweets && (
         <ButtonLoadMore
