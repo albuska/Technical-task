@@ -9,7 +9,7 @@ const Home = () => {
       <TypeWriterEffect
         startDelay={100}
         cursorColor="black"
-        text="Hi, I'm Albina Anistratenko. I'm a begginer frontend developer. I want to show you my technical assignment. I invite you to go to the next page. Have a good day!"
+        text="Hi, I'm Albina Anistratenko. I'm a beginner frontend developer. I want to show you my technical assignment. I invite you to go to the next page. Have a good day!"
         typeSpeed={100}
         eraseSpeed={100}
       />
