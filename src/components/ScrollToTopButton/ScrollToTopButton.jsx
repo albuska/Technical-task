@@ -10,7 +10,6 @@ const ScrollToTopButton = () => {
           <TbArrowBigUpLineFilled />
         </Span>
       </ScrollToTop>
-      ;
     </div>
   );
 };
