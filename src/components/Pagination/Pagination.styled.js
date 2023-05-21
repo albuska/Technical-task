@@ -15,7 +15,7 @@ export const Item = styled.li`
   list-style: none;
 `;
 
-export const PagButtonNumber = styled.a`
+export const PagLinkNumber = styled.a`
   color: black;
   padding: 8px 16px;
   text-decoration: none;

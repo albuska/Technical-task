@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Container, Item, List, PagButtonNumber } from './Pagination.styled';
+import { Container, Item, List, PagLinkNumber } from './Pagination.styled';
 
 export const Pagination = ({ pageNumbers, paginate }) => {
   return (
@@ -8,9 +8,9 @@ export const Pagination = ({ pageNumbers, paginate }) => {
         {pageNumbers.map(number => {
           return (
             <Item key={number}>
-              <PagButtonNumber onClick={() => paginate(number)}>
+              <PagLinkNumber href='#' onClick={() => paginate(number)}>
                 {number}
-              </PagButtonNumber>
+              </PagLinkNumber>
             </Item>
           );
         })}

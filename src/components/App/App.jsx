@@ -3,13 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import { SharedLayout } from '../SharedLayout/SharedLayout.jsx';
 import { GlobalStyle } from '../GlobalStyle.jsx';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton.jsx';
 
 const Home = lazy(() => import('../../pages/Home.jsx'));
 const Tweets = lazy(() => import('../../pages/Tweets.jsx'));
 const NotFound = lazy(() => import('../../pages/NotFound.jsx'));
 
 function App() {
-
   return (
     <>
       <Container>
@@ -20,6 +20,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
+        <ScrollToTopButton />
         <GlobalStyle />
       </Container>
     </>
