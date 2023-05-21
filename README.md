@@ -39,6 +39,7 @@
 ## Мета: Створити картки твітів та додати інтерактивності при клікові на кнопку.
 
 ---
+### Посилання на макет
 [Посилання на макет](https://www.figma.com/file/zun1oP6NmS2Lmgbcj6e1IG/Test?type=design&node-id=0-1&t=5VDfFa5NoTZg8xoz-0)
 
 ---
